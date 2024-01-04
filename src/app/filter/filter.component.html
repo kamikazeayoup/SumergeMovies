@@ -1,0 +1,6 @@
+
+<div class="filters d-flex">
+    <span (click)="filterChanged('all')" class="filter cursor-pointer" [ngClass] = "{ 'filter-selected':selectedFilter=='all' }">{{pageTitle}}</span>
+    <span class="ml-auto filter cursor-pointer" (click)="logout()">Logout</span>
+
+</div>

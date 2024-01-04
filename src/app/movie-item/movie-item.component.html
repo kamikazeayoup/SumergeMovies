@@ -1,0 +1,13 @@
+<div routerLink="/movie/{{movie.id}}" [state] = "{ movie:movie?.id }" class="col-12 cursor-pointer scale">
+    <div class="movie-cover mt-4 position-relative ">
+        <img class="shadow-sm poster" [alt]="movie.original_title" 
+        [src]="'https://image.tmdb.org/t/p/w400' + movie.poster_path">
+        <div class="rating position-absolute">
+           {{movie.vote_average}}<img src="../assets/star.svg" width="18px">
+        </div>
+    </div>
+
+    <p class="movie-title text-center">
+        {{movie.original_title}}
+    </p>
+</div>
