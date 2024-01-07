@@ -13,8 +13,6 @@ export class AuthGuard implements CanActivate {
 
 
    if (isAuthenticated == 'true') {
-    console.log("yes authenticated")
-
       return true;
 
     }

@@ -47,7 +47,6 @@ export class HomeComponent implements OnInit {
       this.totalResults = data.total_results;
       this.pageArray = Array.from({ length: this.totalPages }, (_, i) => i + 1);
 
-      console.log(this.moviesData)
 
 
     });
@@ -73,7 +72,6 @@ export class HomeComponent implements OnInit {
 
   goToPage(page: number): void {
     this.currentPage = page;
-    console.log(page)
     this.fetchMoviesFromJSON(page);
   }
 

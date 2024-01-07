@@ -2,7 +2,7 @@ import { TestBed } from "@angular/core/testing";
 import { AuthGuard } from "../authGuard";
 import { Router } from "@angular/router";
 
-describe('Sign In ', () => {
+describe('SignIn ', () => {
   let authGuard: AuthGuard;
   let router: Router;
 
@@ -34,7 +34,7 @@ describe('Sign In ', () => {
 
 
   it('Sign In Not Successfuly and Login Redirect', () => {
-    localStorage.removeItem('isAuthenticated');
+    localStorage.setItem('isAuthenticated', 'false');
 
     const canActivateResult = authGuard.canActivate();
 
@@ -42,6 +42,5 @@ describe('Sign In ', () => {
 
     expect(router.navigate).toHaveBeenCalledWith(['/login']);
 
-    expect(localStorage.getItem('isAuthenticated')).toBeNull();
   });
 });

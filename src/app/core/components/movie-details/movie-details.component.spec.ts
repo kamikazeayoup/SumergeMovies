@@ -95,7 +95,6 @@ describe('movieDetailsComponent - Fetched Data' , () => {
   });
   it('should retrieve data from specific Id from TMDB APIS', (done:DoneFn) => {
     service.getById('243').subscribe((movie) => {
-      console.log(movie)
      expect(movie).toBeTruthy();
      expect(movie.poster_path).toBeDefined();
      expect(movie.genres).toBeDefined();

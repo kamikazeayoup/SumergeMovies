@@ -11,7 +11,6 @@ export class CsvService {
   constructor(private http: HttpClient) {}
 
   getCsvData(): Observable<string> {
-    console.log("Read")
     return this.http.get(this.csvDataUrl, { responseType: 'text' });
   }
 }

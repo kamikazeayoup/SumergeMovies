@@ -34,15 +34,12 @@ export class SigninComponent {
   
     this.csvService.getCsvData().subscribe((data: string) => {
       this.csvData = data;
-      console.log('Data:', data);
       const rows = this.csvData.split('\n').slice(1); 
-      console.log('Rows:', rows);
   
       for (const row of rows) {
         const [csvEmail, csvPassword] = row.split(',');
 
         if (csvEmail.trim() === this.loginForm.value.email && csvPassword.trim() === this.loginForm.value.password) {
-          console.log('Sign-in successful');
           localStorage.setItem('isAuthenticated', 'true');
           this.authGuard.setAuthenticated(true);
 

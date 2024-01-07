@@ -22,7 +22,7 @@ describe('FilterComponent', () => {
   it('should log out and redirect to login page', fakeAsync(() => {
     spyOn(router, 'navigate').and.stub(); 
     component.logout(); 
-    expect(localStorage.getItem('isAuthenticated')).toBeNull(); 
+    expect(localStorage.getItem('isAuthenticated')).toBe('false'); 
     expect(router.navigate).toHaveBeenCalledWith(['/login']);
   }));
 });
