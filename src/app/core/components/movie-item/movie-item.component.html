@@ -1,0 +1,16 @@
+<div *ngIf="movie.id">
+<div (click)="GoToDetils(movie.id)" class="col-12 cursor-pointer scale">
+    <div class="movie-cover mt-4 position-relative ">
+        <img class="shadow-sm poster" [alt]="movie?.original_title" 
+        [src]="imageUrl + movie.poster_path">
+        <div class="rating position-absolute">
+            {{ movie.vote_average | number:'1.1-1' }}<img src="../assets/star.svg" width="18px">
+        </div>
+    </div>
+
+    <p class="movie-title text-center">
+        {{movie?.original_title}}
+    </p>
+</div>
+
+</div>

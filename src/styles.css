@@ -3,14 +3,25 @@
     cursor: pointer;
 }
 
+
 .scale{
-    transition: 0.4s;
+    transition: transform 0.4s;
 }
 
 .scale:hover{
     transform: scale(1.03);
 }
 
-.website-title{    
-    font-family: 'Zen Tokyo Zoo', cursive;
+#website-title {    
+    font-family: 'Zen Tokyo Zoo';
+    font-size: 250%;
+    padding: 2%;
+    background-color: #1B1A19;
 }
+body{
+   background-color: #333333;
+   color: white;
+        
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
