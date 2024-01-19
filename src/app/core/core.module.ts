@@ -1,24 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FilterComponent } from './components/filter/filter.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 import { MovieItemComponent } from './components/movie-item/movie-item.component';
 import { MoviesContainerComponent } from './components/movies-container/movies-container.component';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CoreRoutingModule } from './core-routing.module';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+
+
 
 
 
 @NgModule({
-  declarations: [FilterComponent , HomeComponent , MovieDetailsComponent , MovieItemComponent , MoviesContainerComponent ],
+  declarations: [NavbarComponent , HomeComponent , MovieDetailsComponent , MovieItemComponent , MoviesContainerComponent, NotFoundComponent ],
   imports: [
     CommonModule,
-    FormsModule, 
     HttpClientModule,
     CoreRoutingModule,
-
   ],
+  exports: [
+  ],
+  providers: [HttpClient],
+
 })
 export class CoreModule { }

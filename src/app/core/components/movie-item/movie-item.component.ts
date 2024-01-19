@@ -17,8 +17,8 @@ export class MovieItemComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  GoToDetils(id:any) : void{
-    this.router.navigate([`/movie/${id}`], { queryParams:  id, skipLocationChange: true});
+  goToDetils(id:any) : void{
+    this.router.navigate([`/movie/${id}`]);
 
   }
 

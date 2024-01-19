@@ -1,19 +1,32 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './Auth/authGuard';
-import { AuthModule } from './Auth/auth.module';
+import { AuthModule } from './auth/auth.module';
+import { NotFoundComponent } from './core/components/not-found/not-found.component';
 
 
 const routes: Routes = [
 
-  {path: "" ,
+  {
+    path: "", 
+    loadChildren: () => AuthModule
+  },
+  {
+    path: "movie" ,
    loadChildren: () =>
-   import('../app/core/core.module').then((m)=>m.CoreModule),
+   import('./core/core.module').then((m)=>m.CoreModule),
   },
   {path: "login" ,
    loadChildren: () => AuthModule
-   
   },
+  {
+    path: "not-found",
+    component: NotFoundComponent
+  },
+  {
+    path: "**",
+    redirectTo: "not-found"
+  }
+
 ];
 
 @NgModule({

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SigninComponent } from './signin/signin.component';
-import { FormsModule } from '@angular/forms';
+import { SigninComponent } from './signIn/signIn.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { SharedModule } from '../shared/shared.module';
 
@@ -12,7 +11,6 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     AuthRoutingModule,
     CommonModule,
-    FormsModule,
     SharedModule
   ],
 })

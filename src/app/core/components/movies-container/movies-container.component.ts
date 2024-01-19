@@ -1,5 +1,4 @@
-import { HostBinding, Input } from '@angular/core';
-import { Component, OnInit } from '@angular/core';
+import { Input , Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'movies-container',

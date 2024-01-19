@@ -1,24 +1,24 @@
 
 
-.movie-details ul{
+.movieDetails ul{
     list-style: none;
 }
 
-.movie-details ul li{
-    margin-bottom: 5px;
+.movieDetails ul li{
+    margin-bottom: 2%;
 }
 
  .shadow {
-    border-radius: 3px;
+    border-radius: 4%;
     width: 100%;
 }
 
 
 .genre{
     border:1px solid #cacaca;;
-    border-radius: 20px;
-    padding:5px 8px;
-    margin-right:10px;
+    border-radius: 46%;
+    padding:1% 2%;
+    margin-inline-start:2%;
     transition: 0.3s;
     color:rgb(73, 73, 73);
 }

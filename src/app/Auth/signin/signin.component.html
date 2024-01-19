@@ -2,11 +2,11 @@
   <mat-card-content>
     <div class="header">
       <img class="logo" src="../../../assets/sumerge logo.png">
-      <P class="toptext">Sign Into Your Account </P>
+      <P class="topText">Sign Into Your Account </P>
     </div>
     <form (ngSubmit)="signIn()" name="loginForm" [formGroup]="loginForm">
       <div class="emailInput">
-        <mat-form-field class="full-width" appearance="outline">
+        <mat-form-field class="fullWidth" appearance="outline">
           <mat-label>Email</mat-label>
           <input
             formControlName="email"
@@ -20,7 +20,7 @@
       </div>
 
       <div>
-        <mat-form-field class="full-width" appearance="outline">
+        <mat-form-field class="fullWidth" appearance="outline">
           <mat-label>Password</mat-label>
           <input formControlName="password" matInput [type]=" hide ? 'password' : 'text'" required />
           <button  mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide Password'"
@@ -34,11 +34,15 @@
         </mat-error>
       </mat-form-field>
       </div>
-      <button mat-flat-button color="primary">Login</button>
+      <button mat-flat-button>Login</button>
     </form>
 
-    <div class="button-row">
-      <p class="toptext">Create New Account</p>
+    <span *ngIf= "this.incorrectInputs" class="em">
+      Email or Password are incorrect!
+    </span>
+
+    <div class="buttonRow">
+      <p class="topText">Create New Account</p>
     </div>
   </mat-card-content>
 </mat-card>

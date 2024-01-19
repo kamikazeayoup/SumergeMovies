@@ -1,24 +1,25 @@
 import { Component } from '@angular/core';
-import { CsvService } from './csv.service';
-import { AuthGuard } from '../authGuard';
+import { CsvService } from '../csv.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthGuard } from '../authGuard';
 
 
 @Component({
-  selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
+  selector: 'app-signIn',
+  templateUrl: './signIn.component.html',
+  styleUrls: ['./signIn.component.css']
 })
 export class SigninComponent {
   csvData: string;
   hide: boolean = false;
+  incorrectInputs: boolean = false;
 
   constructor(private csvService: CsvService , private authGuard: AuthGuard , private fb: FormBuilder , private router: Router) {
     this.csvData = ''
     const isAuthenticated = localStorage.getItem('isAuthenticated');
     if(isAuthenticated == 'true')
-    this.router.navigate(['/home']);
+    this.router.navigate(['/movie']);
   }
 
   loginForm: FormGroup = this.fb.group({
@@ -45,6 +46,9 @@ export class SigninComponent {
 
           return;
         }
+
+        this.incorrectInputs = true;
+
       }
   
       console.log('Invalid credentials');

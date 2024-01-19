@@ -1,6 +1,6 @@
 <div *ngIf="movie.id">
-<div (click)="GoToDetils(movie.id)" class="col-12 cursor-pointer scale">
-    <div class="movie-cover mt-4 position-relative ">
+<div (click)="goToDetils(movie.id)" class="col-12 cursor-pointer scale">
+    <div class="movieCover mt-4 position-relative ">
         <img class="shadow-sm poster" [alt]="movie?.original_title" 
         [src]="imageUrl + movie.poster_path">
         <div class="rating position-absolute">
@@ -8,7 +8,7 @@
         </div>
     </div>
 
-    <p class="movie-title text-center">
+    <p class="movieTitle text-center">
         {{movie?.original_title}}
     </p>
 </div>

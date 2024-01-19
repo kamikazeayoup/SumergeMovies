@@ -3,12 +3,14 @@ import { Router } from '@angular/router';
 import { environment } from '../../../../environments/environment';
 
 
+
+
 @Component({
-  selector: 'filter',
-  templateUrl: './filter.component.html',
-  styleUrls: ['./filter.component.css']
+  selector: 'navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css']
 })
-export class FilterComponent implements OnInit {
+export class NavbarComponent implements OnInit {
   @Input() selectedFilter : string = "all";
   @Output() filter :EventEmitter<string> = new EventEmitter<string>(); 
   public pageTitle : string = environment.title
@@ -16,7 +18,6 @@ export class FilterComponent implements OnInit {
   constructor(private router:Router) { }
 
   ngOnInit(): void {
-    
   }
 
   filterChanged(filter:string){
@@ -27,5 +28,8 @@ export class FilterComponent implements OnInit {
     localStorage.setItem('isAuthenticated' , 'false');
     this.router.navigate(['/login']);
   }
+
+
+
 
 }

@@ -15,15 +15,14 @@ export class HomeComponent implements OnInit {
   totalPages = 0; 
   selectedFilter = "all";
   pageArray: number[] = [];
-
-
-
-  errorMessage = "";
   moviesData: any;
-  constructor(private tmdbService : TMDBService) { }
+  constructor(private tmdbService : TMDBService) {
+
+   }
 
   ngOnInit(): void {
     this.fetchMoviesFromJSON();
+    
   }
 
     getVisiblePages(): number[] {
@@ -47,21 +46,10 @@ export class HomeComponent implements OnInit {
       this.totalResults = data.total_results;
       this.pageArray = Array.from({ length: this.totalPages }, (_, i) => i + 1);
 
-
-
     });
 
   }
 
-  displayMovie(movie:any):void{
-    this.errorMessage = "";
-    if (movie.Error){
-      this.errorMessage = movie.Error;
-      return;
-    }
-   
-    
-  }
 
   filterChanged(filter:string):void{
     switch(filter){

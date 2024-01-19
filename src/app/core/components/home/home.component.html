@@ -1,7 +1,6 @@
 
 
-    <filter [selectedFilter]="selectedFilter" (filter)="filterChanged($event)"></filter>
-    <p class="text-danger">{{errorMessage}}</p>
+    <navbar [selectedFilter]="selectedFilter" (filter)="filterChanged($event)"></navbar>
     <movies-container [movies] = "moviesData"></movies-container>
 
     <nav aria-label="Page navigation ">

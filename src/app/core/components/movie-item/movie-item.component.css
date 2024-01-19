@@ -1,18 +1,19 @@
-.movie-cover .poster {
+.movieCover .poster {
     width: 100%;
     border-radius: 5%;
 }
 
-.movie-title{
+.movieTitle{
     width: 100%;
 }
 
+/* For Rating */
 .rating{
     right:0;
     top:0;
-    margin:10px;
+    margin:7%;
     background-color: white;
     color: black;
-    padding:3px 8px;
-    border-radius: 5px;
+    padding:1% 2%;
+    border-radius: 8%;
 }
