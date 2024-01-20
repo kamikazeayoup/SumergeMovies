@@ -9,7 +9,7 @@ import { AuthGuard } from '../authGuard';
   selector: 'app-signIn',
   templateUrl: './signIn.component.html',
   styleUrls: ['./signIn.component.css']
-})
+}) 
 export class SigninComponent {
   csvData: string;
   hide: boolean = false;
@@ -26,12 +26,17 @@ export class SigninComponent {
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(1)]]
   })
-
+  
+  get email(){
+    return this.loginForm.get('email');
+  }
 
   signIn(): void {
     if (!this.loginForm.valid) {
       return;
     }
+
+    
   
     this.csvService.getCsvData().subscribe((data: string) => {
       this.csvData = data;

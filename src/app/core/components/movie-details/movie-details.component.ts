@@ -22,8 +22,6 @@ export class MovieDetailsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  trim(str:string):string{
-    return str.replace(/ /g,"");
-  }
+  
 
 }

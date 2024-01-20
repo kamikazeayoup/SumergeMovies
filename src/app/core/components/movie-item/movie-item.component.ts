@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { environment } from '../../../../environments/environment';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'movie-item',
@@ -11,14 +11,16 @@ import { Router } from '@angular/router';
 export class MovieItemComponent implements OnInit {
   @Input() movie:any;
   imageUrl : string= environment.imageUrl
-  constructor(private router: Router) { 
+  constructor(private router: Router , private route : ActivatedRoute) { 
   }
 
   ngOnInit(): void {
 
   }
+
+  //relative instead of using the '/movie'
   goToDetils(id:any) : void{
-    this.router.navigate([`/movie/${id}`]);
+    this.router.navigate([id], {relativeTo: this.route} );
 
   }
 

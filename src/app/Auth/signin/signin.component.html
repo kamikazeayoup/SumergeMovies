@@ -13,8 +13,11 @@
             matInput
             placeholder="Enter email address" required
           />
-          <mat-error *ngIf="!loginForm.controls['email'].valid">
+          <mat-error *ngIf="email?.errors?.['required']">
               Email is required
+            </mat-error>
+            <mat-error *ngIf="email?.errors?.['email']">
+              Write a valid Email
             </mat-error>
         </mat-form-field>
       </div>

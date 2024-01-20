@@ -7,14 +7,14 @@ import { environment } from '../../../environments/environment';
 })
 export class TMDBService {
   
-  private URL:string = `https://api.themoviedb.org/3/movie`
+  private URL:string = environment.apiUrl
   private API_KEY: string = `?api_key=${environment.key}`
   private title = environment.apiaddress
 
   constructor(private http:HttpClient) { }
 
   
-
+ 
   public getById(id:string):Observable<any> {
     return this.http.get<any>(`${this.URL}/${id}${this.API_KEY}`);
   }

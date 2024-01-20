@@ -8,12 +8,14 @@
     margin-bottom: 2%;
 }
 
+/*for the poster in movie details*/
  .shadow {
     border-radius: 4%;
     width: 100%;
 }
 
 
+/*the genres in movie-details*/
 .genre{
     border:1px solid #cacaca;;
     border-radius: 46%;
