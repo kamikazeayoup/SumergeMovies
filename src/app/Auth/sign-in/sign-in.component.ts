@@ -6,9 +6,9 @@ import { AuthGuard } from '../authGuard';
 
 
 @Component({
-  selector: 'app-signIn',
-  templateUrl: './signIn.component.html',
-  styleUrls: ['./signIn.component.css']
+  selector: 'app-sign-in',
+  templateUrl: './sign-in.component.html',
+  styleUrls: ['./sign-in.component.css']
 }) 
 export class SigninComponent {
   csvData: string;

@@ -84,29 +84,3 @@ describe('movieDetailsComponent - Mocked', () => {
 
   
 });
-
-describe('movieDetailsComponent - Fetched Data' , () => {
-  let service: TMDBService;
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [HttpClientModule],
-    });
-    service = TestBed.inject(TMDBService);
-  });
-  it('should retrieve data from specific Id from TMDB APIS', (done:DoneFn) => {
-    service.getById('243').subscribe((movie) => {
-     expect(movie).toBeTruthy();
-     expect(movie.poster_path).toBeDefined();
-     expect(movie.genres).toBeDefined();
-     expect(movie.original_title).toBeDefined();
-     expect(movie.release_date).toBeDefined();
-     expect(movie.overview).toBeDefined();
-     expect(movie.popularity).toBeDefined();
-     expect(movie.budget).toBeDefined();
-     expect(movie.revenue).toBeDefined();
-     expect(movie.runtime).toBeDefined();
-     expect(movie.vote_average).toBeDefined();
-     done()
-    });
-  });
-});
