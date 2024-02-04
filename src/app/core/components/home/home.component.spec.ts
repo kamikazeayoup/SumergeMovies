@@ -423,7 +423,7 @@ describe('HomeComponent', () => {
       "total_results": 9061
   };
   
-    service.getMovies().subscribe((data: any) => {
+    service.getMovies(localStorage.getItem("token") , 0 , 20).subscribe((data: any) => {
       expect(data).toEqual(mockMovieData);
 
     });

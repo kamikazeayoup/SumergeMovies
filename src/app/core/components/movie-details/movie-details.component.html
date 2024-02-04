@@ -1,8 +1,8 @@
 <div class="container pt-4 ">
     <div class="row">
         <div class="col-lg-4 col-md-12 col-sm-xs-12 text-center" *ngIf="movie?.poster_path != null">
-            <img class="shadow"  [src]="imageUrl + movie?.poster_path"
-            [alt]="movie?.original_title">
+            <img class="shadow"  [src]="imageUrl + movie.poster_path + imageExtentsion"
+            [alt]="movie?.movie_name">
             <div *ngIf="movie?.genres" class="genre-list mt-4 mb-4 cursor-pointer">
                 <span class="genre text-center text-white " *ngFor="let g of movie?.genres">{{g?.name}}</span>
 
@@ -11,14 +11,14 @@
         <div class="col-lg-8 movieDetails mt-2"> 
             <ul>
                 <li>
-                    <b>Title: </b> {{movie?.original_title}} ( {{movie?.release_date  | slice:0:4}}  )
+                    <b>Title: </b> {{movie?.movie_name}} ( {{movie?.release_date  | slice:0:4}}  )
                 </li>
-                <li>{{movie?.overview}}</li>
-                <li><b>Popularity: </b> {{movie?.popularity}}</li>
-                <li><b>Budget: </b> {{movie?.budget}}$</li>
+                <li>{{movie?.description}}</li>
+                <li><b>Popularity: </b> {{movie?.rating}}</li>
+                <li><b>Budget: </b> {{movie?.revenue}}$</li>
                 <li><b>Revenue: </b> {{movie?.revenue}}$</li>
-                <li><b>Duration: </b> {{movie?.runtime}} Minutes</li>
-                <li><b>Rating: </b> {{movie?.vote_average}}  <img class="pb-1" src="../assets/star.svg"></li>
+                <li><b>Duration: </b> {{movie?.duration}} Minutes</li>
+                <li><b>Rating: </b> {{movie?.rating}}  <img class="pb-1" src="../assets/star.svg"></li>
                 <a href="https://www.imdb.com/title/{{movie?.imdbID}}" target="_blank">
                     <img class="mt-2" src="../assets/imdb.png" width="100px">
                 </a>

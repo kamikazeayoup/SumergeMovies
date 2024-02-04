@@ -8,13 +8,14 @@ import { environment } from '../../../../environments/environment';
   styleUrls: ['./movie-details.component.css']
 })
 export class MovieDetailsComponent implements OnInit {
-  imageUrl: string = environment.imageUrl
+  imageUrl : string= "../../../../assets/"
+  imageExtentsion : string= ".jpg"
   public movie:any;
   constructor(private route:ActivatedRoute, private tmdbservice:TMDBService) { 
    this.route.params.subscribe(
      param => {
        
-        param["id"] ? this.tmdbservice.getById(param["id"]).subscribe(data=>this.movie=data) : ""        
+        param["id"] ? this.tmdbservice.getById(localStorage.getItem("token") , param["id"]).subscribe(data=>this.movie=data) : ""        
      }
    );
   }

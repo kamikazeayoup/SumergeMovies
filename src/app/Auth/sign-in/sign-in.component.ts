@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
-import { CsvService } from '../csv.service';
+import { Component , OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthGuard } from '../authGuard';
+import { AuthService } from '../auth.service';
+
 
 
 @Component({
@@ -11,15 +12,28 @@ import { AuthGuard } from '../authGuard';
   styleUrls: ['./sign-in.component.css']
 }) 
 export class SigninComponent {
-  csvData: string;
   hide: boolean = false;
   incorrectInputs: boolean = false;
+  token: any;
+  result: any
 
-  constructor(private csvService: CsvService , private authGuard: AuthGuard , private fb: FormBuilder , private router: Router) {
-    this.csvData = ''
-    const isAuthenticated = localStorage.getItem('isAuthenticated');
-    if(isAuthenticated == 'true')
-    this.router.navigate(['/movie']);
+
+  constructor(private authService: AuthService , private authGuard: AuthGuard , private fb: FormBuilder , private router: Router) {
+     this.token = localStorage.getItem('token');
+      
+
+     this.authService.checkToken(this.token).pipe().subscribe((data:boolean)=>{
+      if(data == true){
+       this.router.navigate(['/movie']); 
+       console.log("Hola Amegos")
+     }
+
+     });
+
+
+   
+     
+   
   }
 
   loginForm: FormGroup = this.fb.group({
@@ -38,25 +52,18 @@ export class SigninComponent {
 
     
   
-    this.csvService.getCsvData().subscribe((data: string) => {
-      this.csvData = data;
-      const rows = this.csvData.split('\n').slice(1); 
+    this.authService.getLoginDetails(this.loginForm.value.email , this.loginForm.value.password).subscribe((data: any) => {
+      console.log(data)
   
-      for (const row of rows) {
-        const [csvEmail, csvPassword] = row.split(',');
-
-        if (csvEmail.trim() === this.loginForm.value.email && csvPassword.trim() === this.loginForm.value.password) {
-          localStorage.setItem('isAuthenticated', 'true');
+          localStorage.setItem('token', data.accessToken);
           this.authGuard.setAuthenticated(true);
 
-          return;
-        }
 
-        this.incorrectInputs = true;
-
-      }
   
-      console.log('Invalid credentials');
+    },(error) => {
+      console.error('API Error:', error);
+      this.incorrectInputs = true;
+
     });
   }
   

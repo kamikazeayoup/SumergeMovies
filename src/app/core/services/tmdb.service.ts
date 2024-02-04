@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment';
 })
 export class TMDBService {
   
-  private URL:string = environment.apiUrl
+  private URL:string = "http://localhost:8085/movie"
   private API_KEY: string = `?api_key=${environment.key}`
   private title = environment.apiaddress
 
@@ -15,13 +15,17 @@ export class TMDBService {
 
   
  
-  public getById(id:string):Observable<any> {
-    return this.http.get<any>(`${this.URL}/${id}${this.API_KEY}`);
+  public getById(token: any , id: any):Observable<any> {
+    return this.http.get<any>(`${this.URL}/${id}?token=${token}`);
   }
 
-  getMovies(pageno?:number): Observable<any> {
-    const pageNumber = pageno ? `&page=${pageno}` : '&page=1';
-    return this.http.get<any>(`${this.URL}/${this.title}${this.API_KEY}${pageNumber}`)
+  getMovies(token:any , pageno?:any , pageSize?:any ): Observable<any> {
+    if(pageno == undefined)
+    pageno = 0
+  if(pageSize == undefined)
+  pageSize = 20
+
+    return this.http.get<any>(this.URL+"?token=" + token + "&page=" + pageno + "&size=" + pageSize)
   }
 
 }

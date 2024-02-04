@@ -9,10 +9,10 @@ import { TMDBService } from '../../services/tmdb.service';
 export class HomeComponent implements OnInit {
 
   moviesPerPage = 20; 
-  currentPage = 1; 
+  currentPage = 0; 
   pagesToShow: number = 1;
-  totalResults = 4094; 
-  totalPages = 0; 
+  totalResults = 25; 
+  totalPages = 1; 
   selectedFilter = "all";
   pageArray: number[] = [];
   moviesData: any;
@@ -27,12 +27,14 @@ export class HomeComponent implements OnInit {
 
     getVisiblePages(): number[] {
       const halfPagesToShow = Math.floor(this.pagesToShow / 2);
-      let startPage = Math.max(1, this.currentPage - halfPagesToShow);
+      let startPage = Math.max(0, this.currentPage - halfPagesToShow);
       const endPage = Math.min(this.totalPages, startPage + this.pagesToShow - 1);
+
   
       if (endPage - startPage < this.pagesToShow - 1) {
         startPage = Math.max(1, endPage - this.pagesToShow + 1);
       }
+
   
       return Array.from({ length: (endPage - startPage) + 1 }, (_, i) => startPage + i);
     }
@@ -40,10 +42,9 @@ export class HomeComponent implements OnInit {
   fetchMoviesFromJSON(pageno?:number):void{
 
 
-    this.tmdbService.getMovies(pageno).subscribe(data => {
-      this.moviesData = data;
-      this.totalPages = data.total_pages;
-      this.totalResults = data.total_results;
+    this.tmdbService.getMovies(localStorage.getItem("token") , pageno , 20).subscribe(data => {
+      this.moviesData = data.content;
+      this.totalResults = data.pageable.totalElements;
       this.pageArray = Array.from({ length: this.totalPages }, (_, i) => i + 1);
 
     });
@@ -71,7 +72,7 @@ export class HomeComponent implements OnInit {
   }
 
   previousPage(): void {
-    if (this.currentPage > 1) {
+    if (this.currentPage > 0) {
       this.currentPage--;
       this.fetchMoviesFromJSON(this.currentPage);
     }
