@@ -9,6 +9,7 @@ import { environment } from '../../environments/environment';
 export class AuthService { 
   private loginUrl = environment.authUrl;
   private tokenUrl = environment.validationUrl
+  private registerUrl = environment.registerUrl
 
   constructor(private http: HttpClient) {}
 
@@ -21,6 +22,17 @@ export class AuthService {
       'Content-Type': 'application/json'
     });
     return this.http.post(this.loginUrl, requestBody , { responseType: 'json' });
+  }
+  signUp(username: string , email: string, password: string): Observable<any> {
+    const requestBody = {
+      username: username,
+      email: email,
+      password: password
+    };
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.post(this.registerUrl, requestBody ,  { headers: headers , responseType: 'text' });
   }
 
   checkToken( token : any ): Observable<any> {

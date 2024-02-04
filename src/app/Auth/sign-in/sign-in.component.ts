@@ -24,18 +24,7 @@ export class SigninComponent {
       this.router.navigate(['/movie']); 
       console.log("Hola Amegos")
     }
-
-    //  this.authService.checkToken(this.token).pipe().subscribe((data:boolean)=>{
-    //   if(data == true){
-    //    this.router.navigate(['/movie']); 
-    //    console.log("Hola Amegos")
-    //  }
-
-    //  });
-
-
    
-     
    
   }
 
@@ -68,6 +57,9 @@ export class SigninComponent {
       this.incorrectInputs = true;
 
     });
+  }
+  navigateToSignUp() {
+    this.router.navigate(['/register']);
   }
   
     

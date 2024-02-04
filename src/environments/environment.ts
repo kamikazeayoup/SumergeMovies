@@ -3,6 +3,7 @@ export const environment = {
     title: "Top Rated",
     movieUrl: 'http://localhost:8085/movie', 
     authUrl: 'http://localhost:8083/api/auth/login', 
+    registerUrl: 'http://localhost:8083/api/auth/register',
     validationUrl: 'http://localhost:8080/api/validate',
     imageUrl: '../../../../assets/'
 

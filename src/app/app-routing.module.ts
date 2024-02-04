@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthModule } from './auth/auth.module';
 import { NotFoundComponent } from './core/components/not-found/not-found.component';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,9 @@ const routes: Routes = [
   },
   {path: "login" ,
    loadChildren: () => AuthModule
+  },
+  {path: "register" , 
+  component: SignUpComponent
   },
   {
     path: "not-found",

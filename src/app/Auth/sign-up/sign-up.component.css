@@ -1,0 +1,51 @@
+mat-card {
+    max-width: 50%;
+    justify-content: center;
+    align-items: center;
+    margin: 2em auto;
+    text-align: center;
+  }
+  .em{
+    color: red;
+  }
+
+/*change the angular material button*/
+   .mat-mdc-unelevated-button:not(:disabled) {
+    background-color:  #1b6ca8;
+}
+
+
+  .emailInput{
+    padding-bottom: 2%;
+  }
+  /*Sign Into Your Account text*/
+  .topText{
+    color: black;
+    padding-top: 4%;
+  }
+  .logo{
+    width: 50%;
+  }
+  
+  .header{
+    text-align: center;
+  
+  }
+
+  /*for email and password field*/
+  .fullWidth {
+    width: 80%;
+  }
+  
+  .buttonRow {
+    padding-top: 4%;
+  }
+  
+
+  
+  .emailInput{
+    padding-top: 3%;
+  }
+  
+  
+  
