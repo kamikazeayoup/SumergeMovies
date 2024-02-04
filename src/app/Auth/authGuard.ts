@@ -15,16 +15,9 @@ result: any
   canActivate():boolean {
     const token = localStorage.getItem('token');
 
-    this.authService.checkToken(token).pipe().
-      subscribe((data:boolean)=>{
-      this.result = data
-          
 
-      });
-    
-   
 
-      if (this.result == true) {
+      if (token != "") {
         return true;
   
       }

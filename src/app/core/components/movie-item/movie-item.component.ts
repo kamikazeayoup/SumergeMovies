@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 export class MovieItemComponent implements OnInit {
   @Input() movie:any;
-  imageUrl : string= "../../../../assets/"
+  imageUrl : string= environment.imageUrl
   imageExtentsion : string= ".jpg"
 
   constructor(private router: Router , private route : ActivatedRoute) { 

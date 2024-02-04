@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TMDBService } from '../../services/tmdb.service';
+import { AuthService } from '../../../auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -16,12 +18,20 @@ export class HomeComponent implements OnInit {
   selectedFilter = "all";
   pageArray: number[] = [];
   moviesData: any;
-  constructor(private tmdbService : TMDBService) {
+  constructor(private tmdbService : TMDBService , private authService:AuthService , private router:Router) {
 
    }
 
   ngOnInit(): void {
+    const token = localStorage.getItem('token');
     this.fetchMoviesFromJSON();
+      this.authService.checkToken(token).subscribe((data:boolean)=>{
+       if(data == false){
+          localStorage.setItem('token' , "");
+          this.router.navigate(['/login'])
+      }
+
+      });
     
   }
 

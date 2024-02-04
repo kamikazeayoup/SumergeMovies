@@ -5,10 +5,10 @@ import { environment } from '../../../../environments/environment';
 @Component({
   selector: 'app-movie-details',
   templateUrl: './movie-details.component.html',
-  styleUrls: ['./movie-details.component.css']
+  styleUrls: ['./movie-details.component.css'] 
 })
 export class MovieDetailsComponent implements OnInit {
-  imageUrl : string= "../../../../assets/"
+  imageUrl : string= environment.imageUrl
   imageExtentsion : string= ".jpg"
   public movie:any;
   constructor(private route:ActivatedRoute, private tmdbservice:TMDBService) { 

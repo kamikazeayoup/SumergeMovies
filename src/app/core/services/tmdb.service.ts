@@ -7,9 +7,7 @@ import { environment } from '../../../environments/environment';
 })
 export class TMDBService {
   
-  private URL:string = "http://localhost:8085/movie"
-  private API_KEY: string = `?api_key=${environment.key}`
-  private title = environment.apiaddress
+  private URL:string = environment.movieUrl
 
   constructor(private http:HttpClient) { }
 

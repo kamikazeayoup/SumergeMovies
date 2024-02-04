@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient , HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
-  private loginUrl = 'http://localhost:8083/api/auth/login';
-  private tokenUrl = 'http://localhost:8080/api/validate'
+export class AuthService { 
+  private loginUrl = environment.authUrl;
+  private tokenUrl = environment.validationUrl
 
   constructor(private http: HttpClient) {}
 

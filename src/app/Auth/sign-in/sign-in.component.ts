@@ -20,15 +20,18 @@ export class SigninComponent {
 
   constructor(private authService: AuthService , private authGuard: AuthGuard , private fb: FormBuilder , private router: Router) {
      this.token = localStorage.getItem('token');
-      
+     if(this.token != ""){
+      this.router.navigate(['/movie']); 
+      console.log("Hola Amegos")
+    }
 
-     this.authService.checkToken(this.token).pipe().subscribe((data:boolean)=>{
-      if(data == true){
-       this.router.navigate(['/movie']); 
-       console.log("Hola Amegos")
-     }
+    //  this.authService.checkToken(this.token).pipe().subscribe((data:boolean)=>{
+    //   if(data == true){
+    //    this.router.navigate(['/movie']); 
+    //    console.log("Hola Amegos")
+    //  }
 
-     });
+    //  });
 
 
    
