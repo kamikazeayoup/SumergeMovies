@@ -13,21 +13,25 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  getLoginDetails( email : string , password : string): Observable<any> {
+  getLoginDetails( email : string , password : string , token: string): Observable<any> {
     const requestBody = {
       email: email,
-      password: password
+      password: password,
+      captchaToken: token
+
     };
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
     return this.http.post(this.loginUrl, requestBody , { responseType: 'json' });
   }
-  signUp(username: string , email: string, password: string): Observable<any> {
+  signUp(username: string , email: string, password: string , token: string): Observable<any> {
     const requestBody = {
       username: username,
       email: email,
-      password: password
+      password: password,
+      captchaToken: token
+      
     };
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'

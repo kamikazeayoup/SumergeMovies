@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthGuard } from '../authGuard';
 import { AuthService } from '../auth.service';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
+import { first } from 'rxjs';
 
 
 
@@ -18,7 +20,7 @@ export class SigninComponent {
   result: any
 
 
-  constructor(private authService: AuthService , private authGuard: AuthGuard , private fb: FormBuilder , private router: Router) {
+  constructor(private authService: AuthService , private authGuard: AuthGuard , private fb: FormBuilder ,private recaptchaV3Service: ReCaptchaV3Service , private router: Router) {
      this.token = localStorage.getItem('token');
      if(this.token != ""){
       this.router.navigate(['/movie']); 
@@ -43,20 +45,28 @@ export class SigninComponent {
     }
 
     
-  
-    this.authService.getLoginDetails(this.loginForm.value.email , this.loginForm.value.password).subscribe((data: any) => {
-      console.log(data)
-  
-          localStorage.setItem('token', data.accessToken);
-          this.authGuard.setAuthenticated(true);
 
-
+    this.recaptchaV3Service.execute('importantAction')
+    .subscribe((token) =>  {
+      console.log(token)
+      this.authService.getLoginDetails(this.loginForm.value.email , this.loginForm.value.password , token).pipe(first()).subscribe((data: any) => {
+        console.log(data)
+    
+            localStorage.setItem('token', data.accessToken);
+            this.authGuard.setAuthenticated(true);
   
-    },(error) => {
-      console.error('API Error:', error);
-      this.incorrectInputs = true;
+  
+    
+      },(error) => {
+        console.error('API Error:', error);
+        this.incorrectInputs = true;
+  
+      });
+  
 
     });
+  
+    
   }
   navigateToSignUp() {
     this.router.navigate(['/register']);

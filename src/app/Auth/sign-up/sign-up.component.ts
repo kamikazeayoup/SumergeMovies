@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { AuthGuard } from '../authGuard';
+import { first } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
 
 @Component({
   selector: 'app-sign-up',
@@ -16,7 +17,8 @@ export class SignUpComponent {
   token: any;
   result: any
 
-  constructor(private authService: AuthService , private authGuard: AuthGuard , private fb: FormBuilder , private router: Router){
+  constructor(private authService: AuthService ,  private recaptchaV3Service: ReCaptchaV3Service
+    , private fb: FormBuilder , private router: Router){
     this.token = localStorage.getItem('token');
      if(this.token != ""){
       this.router.navigate(['/movie']); 
@@ -40,17 +42,22 @@ export class SignUpComponent {
     if (!this.signupForm.valid) {
       return; 
     }
+    this.recaptchaV3Service.execute('importantAction')
+    .subscribe((token) =>  {
 
-    this.authService.signUp(this.signupForm.value.username , this.signupForm.value.email , this.signupForm.value.password).subscribe((data: any) => {
+      this.authService.signUp(this.signupForm.value.username , this.signupForm.value.email , this.signupForm.value.password , token).pipe(first()).subscribe((data: any) => {
       
-      this.router.navigate(['/login'])
+        this.router.navigate(['/login'])
+    
+      },(error) => {
+        console.error('API Error:', error);
   
-    },(error) => {
-      console.error('API Error:', error);
-
-      this.viewError = error.error;
-      this.incorrectInputs = true;
+        this.viewError = error.error;
+        this.incorrectInputs = true;
+  
+      });
 
     });
+    
   }
 } 
